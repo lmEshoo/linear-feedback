@@ -1,15 +1,15 @@
 module fib_lfsr(
   input  clk,
   input  rst,
-  output [4:0] data
-
+  output reg [4:0] data;
+  input [4:0] seed
 );
 
-always @(posedge clk or negedge rst)
+always @(posedge clk)
   if (~rst) 
-    data <= 4'b0111;
+    data = {data[3:0], data[4] ^ data[2]} ;
   else
-    data <= {data[3:0], data[4] ^ data[2]} ;
+    data = seed;
 endmodule
 
 
