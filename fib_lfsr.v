@@ -2,7 +2,7 @@ module fib_lfsr(
 
   input  clk,
 
-  input  rst_n,
+  input  rst,
 
 
 
@@ -18,11 +18,11 @@ wire feedback = data[4] ^ data[1] ;
 
 
 
-always @(posedge clk or negedge rst_n)
+always @(posedge clk or negedge rst)
 
-  if (~rst_n) 
+  if (~rst) 
 
-    data <= 4'hf;
+    data <= 5'h1f;
 
   else
 
